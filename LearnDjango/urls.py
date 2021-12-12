@@ -19,10 +19,16 @@ from . import view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # http:127.0.0.1:8000/num/string
-    path('num/<str:pg>', view.num_parameter),
+    # http:127.0.0.1:8000/str/string
+    path('str/<str:pg>', view.num_parameter),
     # http:127.0.0.1:8000/int/string/int
     path('<int:n>/<str:op>/<int:m>', view.cal_view),
     # http:127.0.0.1:8000/string/int(2)/int(2)
-    re_path(r'^(?P<op>\w+)/(?P<x>\d{1,2})/(?P<y>\d{1,2})$', view.cal_re_view)
+    re_path(r'^(?P<op>\w+)/(?P<x>\d{1,2})/(?P<y>\d{1,2})$', view.cal_re_view),
+    path('<int:g>/', view.request_view),
+    path('get/', view.get_view),
+    path('post/', view.post_view),
+    path('test-post', view.test_post_view),
+    path('templates/', view.templates_view),
+    path('templates2/', view.templates_view2)
 ]
