@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Book</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>pub</th>
+        <th>price</th>
+        <th>market_price</th>
+        <th>op</th>
+    </tr>
+    {% for b in book %}
+        <tr>
+            <td>{{ b.id }}</td>
+            <td>{{ b.title }}</td>
+            <td>{{ b.pub }}</td>
+            <td>{{ b.price }}</td>
+            <td>{{ b.market_price }}</td>
+            <td>
+                <a href="/bookstore/update_book/{{ b.id }}">update</a>
+                <a href="/bookstore/delete_book?book_id={{ b.id }}">delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
