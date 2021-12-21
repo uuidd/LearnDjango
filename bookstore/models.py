@@ -32,3 +32,11 @@ class AuthorWife(models.Model):
 
     class Meta:
         db_table = 'author_wife'
+
+
+class Student(models.Model):
+    name = models.CharField('名字', max_length=11)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'student'
