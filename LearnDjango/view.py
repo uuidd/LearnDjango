@@ -81,3 +81,41 @@ def templates_view2(request):
         'user_name': 'name'
     }
     return render(request, 'test_templates.html', dic)
+
+
+def param_view(request):
+    def say_hi():
+        return 'hello'
+
+    class Dog:
+        def say(self):
+            return '汪汪'
+
+    dic = {}
+    dic['int'] = 88
+    dic['str'] = 'test'
+    dic['lst'] = ['tom', 'jack', 'lily']
+    dic['dict'] = {'a': 9, 'b': 8}
+    dic['func'] = say_hi
+    dic['class_obj'] = Dog()
+    return render(request, 'test_param.html', dic)
+
+
+def test_my_cal(request):
+    if request.method == 'GET':
+        return render(request, 'myCal.html')
+    elif request.method == 'POST':
+        x = int(request.POST['x'])
+        y = int(request.POST['y'])
+        op = request.POST['op']
+        result = 0
+        if op == 'add':
+            result = x + y
+        elif op == 'sub':
+            result = x - y
+        elif op == 'mul':
+            result = x * y
+        elif op == 'div':
+            result = x / y
+
+        return render(request, 'myCal.html', locals())
