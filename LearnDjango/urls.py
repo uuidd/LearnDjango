@@ -34,5 +34,6 @@ urlpatterns = [
     path('param/', view.param_view),
     path('myCal/', view.test_my_cal),
     path('music/', include('music.urls')),
-    path('bookstore/', include('bookstore.urls'))
+    path('bookstore/', include('bookstore.urls')),
+    path('two/', include('two.urls'))
 ]
