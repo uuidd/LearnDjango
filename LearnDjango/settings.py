@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'zz',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'HOST': '192.168.84.177',
         'PORT': 3306
     }
 }
@@ -130,3 +130,14 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+        'TIMEOUT': 300,  # 缓存保存时间，单位秒，默认值300
+        'OPTIONS': {
+            'MAX_ENTRIES': 300,  # 缓存最大数据条数
+            'CULL_FREQUENCY': 2,  # 缓存条数达到最大值时，删除1/x的缓存数据
+        }
+    }
+}
